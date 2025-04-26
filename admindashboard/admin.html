@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Music Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>   
+   
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Dashboard</h2>
+        <ul>
+            <li><a href="#users">User Management</a></li>
+            <li><a href="#reports">Reports & Complaints</a></li>
+            <li><a href="#security">Security & Access</a></li>
+            <li><a href="#analytics">Analytics & Engagement</a></li>
+            <li><a href="#settings">Settings</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <section id="users" class="active">
+            <h2>User Management</h2>
+            <button onclick="exportUsersCSV()">Export Users (CSV)</button>
+            <button onclick="fetchUsers()">Load Users</button>
+
+
+
+<!-- Add User Form -->
+<div id="addUserForm">
+    <h3>Add New User</h3>
+    <input type="text" id="newUserName" placeholder="Name">
+    <select id="newUserRole">
+        <option value="Admin">Admin</option>
+        <option value="Editor">Editor</option>
+        <option value="Moderator">Moderator</option>
+        <option value="User">User</option>
+    </select>
+    <button onclick="addUser()">Add User</button>
+</div>
+
+<!-- Edit User Modal -->
+<div id="editModal" style="display:none; background:#1e1e1e; padding:20px; position:fixed; top:20%; left:50%; transform:translateX(-50%); z-index:1000; border-radius:10px;">
+    <h3>Edit User</h3>
+    <input type="hidden"  id="editUserId">
+    <input type="text" id="editUserName" placeholder="Name">
+    <select id="editUserRole" style="margin-bottom: 20px;">
+        <option value="Admin">Admin</option>
+        <option value="Editor">Editor</option>
+        <option value="Moderator">Moderator</option>
+        <option value="User">User</option>
+    </select>
+    <button style="margin-bottom: 20px;" onclick="saveUserEdit() ">Save Changes</button>
+    <button style="margin-bottom: 20px;" onclick="closeEditModal()">Cancel</button>
+</div>
+
+
+
+
+
+
+            <table id="userTable">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </table>
+        </section>
+        <section id="reports">
+            <h2>Reports & Complaints</h2>
+            <button onclick="fetchReports()">View Reports</button>
+            <div id="reportList"></div>
+        </section>
+        <section id="security">
+            <h2>Security & Access</h2>
+            <p>Manage authentication, ban users, and enable 2FA.</p>
+        </section>
+        <section id="analytics">
+            <h2>Analytics & Engagement</h2>
+            <div class="container">
+                <div class="stats">
+                    <div class="card"><h3>Total Listeners</h3><p id="totalListeners">0</p></div>
+                    <div class="card"><h3>Active Users</h3><p id="activeUsers">0</p></div>
+                    <div class="card"><h3>Engagement Rate</h3><p id="engagementRate">0%</p></div>
+                </div>
+                <h2>Trending Songs</h2>
+                <ul id="trendingSongs"></ul>
+                <h2>User Growth</h2>
+                <canvas id="userGrowthChart"></canvas>
+                <h2>Live Songs Played / Minute</h2>
+<canvas id="livePlaysChart" height="100"></canvas>
+
+            </div>
+
+            <h2>Analytics Overview</h2> 
+<div class="stats">
+    <div class="card"><h3>Total Listeners</h3><p id="totalListeners">0</p></div>
+    <div class="card"><h3>Active Users (Live)</h3><p id="activeUsers">0</p></div>
+    <div class="card"><h3>Engagement Rate</h3><p id="engagementRate">0%</p></div>
+    <div class="card"><h3>Total Plays Today</h3><p id="totalPlays">0</p></div>
+    <div class="card"><h3>Most Played Genre</h3><p id="topGenre">-</p></div>
+</div>
+
+<h2>Trending Songs</h2>
+<ul id="trendingSongs"></ul>
+
+<h2>User Growth (Monthly)</h2>
+<canvas id="userGrowthChart"></canvas>
+
+        </section>
+
+
+        <section id="settings">
+            <h2>Admin Settings</h2>
+            <div class="container">
+                <h1>Admin Settings</h1>
+       
+
+<!-- GENERAL -->
+<div class="form-group">
+    <label for="siteName">Platform Name</label>
+    <input type="text" id="siteName" value="My Music Platform">
+</div>
+<div class="form-group">
+    <label for="theme">Theme</label>
+    <select id="theme">
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="maintenanceMode">Maintenance Mode</label>
+    <select id="maintenanceMode">
+        <option value="off">Off</option>
+        <option value="on">On</option>
+    </select>
+</div>
+
+<!-- STREAMING -->
+<div class="form-group">
+    <label for="maxUsers">Max Active Users</label>
+    <input type="number" id="maxUsers" value="1000">
+</div>
+<div class="form-group">
+    <label for="streamQuality">Default Streaming Quality</label>
+    <select id="streamQuality">
+        <option value="low">Low (128kbps)</option>
+        <option value="medium">Medium (192kbps)</option>
+        <option value="high">High (320kbps)</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="adsEnabled">Enable Ads</label>
+    <select id="adsEnabled">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select>
+</div>
+
+<!-- USER CONTROL -->
+<div class="form-group">
+    <label for="userRoles">Default User Role</label>
+    <select id="userRoles">
+        <option value="admin">Admin</option>
+        <option value="editor">Editor</option>
+        <option value="moderator">Moderator</option>
+        <option value="user">User</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="maxUpload">Max Upload Size (MB)</label>
+    <input type="number" id="maxUpload" value="50">
+</div>
+<div class="form-group">
+    <label for="enableReports">Enable User Reports</label>
+    <select id="enableReports">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select>
+</div>
+
+<!-- SECURITY -->
+<div class="form-group">
+    <label for="enable2FA">Enable 2FA for Admins</label>
+    <select id="enable2FA">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="sessionTimeout">Session Timeout (min)</label>
+    <input type="number" id="sessionTimeout" value="30">
+</div>
+<div class="form-group">
+    <label for="loginAlert">Login Alert Emails</label>
+    <select id="loginAlert">
+        <option value="enabled">Enabled</option>
+        <option value="disabled">Disabled</option>
+    </select>
+</div>
+
+<!-- MONETIZATION -->
+<div class="form-group">
+    <label for="premiumEnabled">Enable Premium Plans</label>
+    <select id="premiumEnabled">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="defaultPlan">Default Plan</label>
+    <select id="defaultPlan">
+        <option value="free">Free</option>
+        <option value="premium">Premium</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="revenueShare">Revenue Share (%)</label>
+    <input type="number" id="revenueShare" value="70">
+</div>
+
+
+
+
+
+                <button onclick="saveSettings()">Save Settings</button>
+            </div>
+
+        </section>
+
+
+
+
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

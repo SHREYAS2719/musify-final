@@ -1,0 +1,218 @@
+* {
+    margin: 0%;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    animation: fadein 1.2s ease-in-out;
+}
+
+@keyframes fadein {
+    0% {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 100;
+    }
+}
+
+.music-upload-bg {
+    height: 100vh;
+    width: 100%;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.back-page {
+    height: 11%;
+    width: 100%;
+    background-color: rgb(20, 20, 20);
+    display: flex;
+    justify-content: center;
+}
+
+.back-with-logo {
+    height: 100%;
+    width: 55%;
+    padding: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+
+
+.fillform-page {
+    height: 78%;
+    width: 60%;
+    /* border: 1px solid white; */
+    overflow-y: scroll;
+    color: rgb(117, 117, 117);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.artwork-with-artist-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.artwork {
+    height: 200px;
+    width: 200px;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding-top: 20px;
+}
+
+.artwork-upload-btn{
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.artwork-upload-btn button{
+    padding: 5px 30px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border: 1px solid white;
+    transition: all 0.3s ease-in;
+}
+
+.artwork-upload-btn button:hover{
+    background-color: rgb(208, 255, 0);
+    color: #1a1a1a;
+    font-weight: 500;
+
+}
+
+
+.track-upload {
+    width: 90%;
+    height: 100px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.track-upload button{
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+
+.track-upload button:hover{
+    color: yellow;
+}
+
+
+
+.form-section {
+    width: 100%;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    gap: 30px;
+}
+
+.form-section input {
+    height: 40px;
+    width: 90%;
+    border: 1px solid rgba(255, 249, 61, 0.534);
+    border-radius: 10px;
+    padding-left: 20px;
+}
+
+
+.next-section {
+    height: 11%;
+    width: 100%;
+    background-color: rgb(20, 20, 20);
+}
+
+.next-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.next-section i {
+    font-size: 0.8rem;
+    color: rgba(40, 40, 40, 0.94);
+}
+
+.next-btn {
+    padding: 5px 40px;
+    border-radius: 5px;
+    background-color: rgb(212, 255, 0);
+    color: #1a1a1a;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+}
+.next-btn:hover{
+    background-color: rgb(135, 154, 39);
+}
+
+
+
+
+@media (max-width:768px) {
+    .fillform-page {
+        width: 80%;
+    }
+
+    .back-with-logo {
+        height: 100%;
+        width: 70%;
+    }
+}
+
+@media (max-width:500px) {
+    .fillform-page {
+        width: 95%;
+    }
+    .back-with-logo {
+        height: 100%;
+        width: 80%;
+    }
+
+    .track-upload h1{
+        font-size: 0.9rem;
+    }
+    .track-upload button{
+        font-size: 0.9rem;
+    }
+}

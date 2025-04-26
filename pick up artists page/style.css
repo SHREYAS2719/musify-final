@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Kaushan+Script&family=Lexend:wght@100..900&family=Libre+Barcode+39+Extended+Text&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,500;1,900&family=The+Nautigal:wght@400;700&family=Unbounded:wght@200..900&family=Ysabeau+Office:ital,wght@0,1..1000;1,1..1000&display=swap');
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: "Lexend", sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    height: 200px;
+    background: rgb(217, 0, 255);
+    background: linear-gradient(0deg, rgba(217, 0, 255, 0) 0%, rgba(67, 0, 101, 0.255) 100%);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    transition: transform 0.3s;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color: white;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card.selected {
+    border: 2px solid blue;
+}
+
+
+.card img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 3px solid white;
+    padding: 5px;
+}
+
+.card h3 {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+.next-button {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 100%;
+    }
+}

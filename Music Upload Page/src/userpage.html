@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+    
+    <link href="./output.css" rel="stylesheet">
+    <title>Music Upload Page</title>
+</head>
+
+<body>
+
+    <div class="music-upload-bg">
+
+        <div class="back-page">
+            <div class="back-with-logo">
+              <a href="/Home Page/src/userpage.html">  <i class="fa-solid fa-arrow-left"></i></a>
+                <a href="/Home Page/src/userpage.html"><h1>MusiFY</h1></a>
+            </div>
+        </div>
+
+
+
+        <div class="fillform-page">
+
+            <div class="artwork-with-artist-name">
+                <div class="artwork"></div>
+                <div class="artwork-upload-btn text-white">
+                    <button id="uploadimg"> <input type="file"></button>
+                   
+                </div>
+            </div>
+
+            <form action="submit" class="form-section">
+
+                <input id="releasename" type="text" placeholder="Release Name" >
+                <input id="songlangauge" type="text" placeholder="Song Langauge" >
+                <input id="genre" type="text" placeholder="Style/Genre">
+
+                <div class="track-upload">
+                    <h1>1. Track File</h1>
+                    <button>Upload</button>
+                </div>
+
+                <input id="year" type="text" placeholder="Recording Year">
+                <input id="lyricslan" type="text" placeholder="Lyrics Langauge">
+                <input id="content" type="text" placeholder="Explicit Content">
+                <input id="origin" type="text" placeholder="Track Origin">
+                <input id="writer" type="text" placeholder="Writer's">
+                <input id="production" type="text" placeholder="Production">
+
+            </form>
+
+        </div>
+        <div class="next-section">
+            <button type="submit" class="next-btn">Upload <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </div>
+
+    
+    
+    <script type="module" src="script.js" defer></script>
+</body>
+
+</html>

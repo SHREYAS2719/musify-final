@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Edit Profile</title>
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function () {
+            const saveProfileButton = document.getElementById("save-profile");
+            const usernameInput = document.getElementById("username-input");
+            const emailInput = document.getElementById("email-input");
+            const genderInput = document.getElementById("gender-input");
+            const dobYearInput = document.getElementById("dob-year-input");
+            const dobMonthInput = document.getElementById("dob-month-input");
+            const dobDayInput = document.getElementById("dob-day-input");
+            const countryInput = document.getElementById("country-input");
+            const marketingCheckbox = document.getElementById("marketing-checkbox");
+
+            saveProfileButton.addEventListener("click", function () {
+                const profileData = {
+                    username: usernameInput.value,
+                    email: emailInput.value,
+                    gender: genderInput.value,
+                    dob: `${dobYearInput.value}-${dobMonthInput.value}-${dobDayInput.value}`,
+                    country: countryInput.value,
+                    marketing: marketingCheckbox.checked
+                };
+                
+                console.log("Profile Data Saved:", profileData);
+                alert("Profile saved successfully!");
+                
+                usernameInput.value = "";
+                emailInput.value = "";
+                genderInput.value = "";
+                dobYearInput.value = "";
+                dobMonthInput.value = "";
+                dobDayInput.value = "";
+                countryInput.value = "";
+                marketingCheckbox.checked = false;
+            });
+        });
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .profile-container {
+            width: 90%;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        h1 {
+            font-size: 32px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            background-color: #1db954;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 20px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #1ed760;
+        }
+        .home a i{
+            color: #1db954;
+            height: 40px;
+            width: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="home">
+        <a href="/Main Home Page/src/userpage.html"> <i class="fa-solid fa-house-chimney"></i></a>
+     </div>
+    <div class="profile-container">
+        <h1>Edit Profile</h1>
+        <label>Username</label>
+        <input type="text" id="username-input" placeholder="Enter new username">
+        <label>Email</label>
+        <input type="email" id="email-input" placeholder="Enter new email">
+        <label>Gender</label>
+        <select id="gender-input">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <label>Date of Birth</label>
+        <div style="display: flex; gap: 5px;">
+            <input type="text" id="dob-year-input" placeholder="Year">
+            <select id="dob-month-input">
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+            </select>
+            <input type="text" id="dob-day-input" placeholder="Day">
+        </div>
+        <label>Country or Region</label>
+        <input type="text" id="country-input" placeholder="Enter country">
+        <input type="checkbox" id="marketing-checkbox">
+        <label for="marketing-checkbox">Share my registration data with Spotify's content providers for marketing purposes.</label>
+        <button id="save-profile">Save profile</button>
+    </div>
+</body>
+</html>

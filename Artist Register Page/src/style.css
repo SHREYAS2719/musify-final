@@ -1,0 +1,74 @@
+.artist-register-page-bg {
+    height: 100vh;
+    width: 100%;
+    background: rgb(0, 71, 78);
+    background: linear-gradient(180deg, rgb(0, 25, 27) 29%, rgba(0, 0, 0, 1) 100%);
+}
+
+
+.form-page input{
+    border: 1px solid rgb(129, 129, 129);
+    padding-left: 20px;
+    border-radius: 10px;
+}
+
+.sumbit-btn{
+    margin-top: 10px;
+    padding: 3px 35px;
+    color: rgb(201, 201, 201);
+    border: 1px solid rgb(139, 139, 139);
+    font-size: 13px;
+    border-radius: 20px;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+}
+
+.sumbit-btn:hover{
+    background-color: #003941;
+    box-shadow: 0px 0px 10px #003941;
+    
+}
+
+.artist-register{
+    font-size: 20px;
+    font-weight: 500;
+    border-bottom: 1px solid rgb(134, 134, 134);
+    padding-bottom: 10px;
+    width: 10rem;
+    text-align: center;
+}
+
+
+.inner span{
+    cursor: pointer;
+}
+
+.account-benifits-name{
+    font-size: 17px;
+    font-weight: 600;
+    padding-top: 20px;
+}
+
+.points i{
+    background-color: rgba(95, 95, 95, 0.274);
+    padding: 5.5px 6px;
+    border-radius: 50%;
+    font-size: 10px;
+    color: rgb(218, 218, 218);
+}
+
+.points a{
+    font-weight: 500;
+}
+
+.points span{
+    padding: 8px 17px;
+}
+
+
+
+@media (max-width:768px) {
+    .account-benifits-name{
+        padding-top: 0;
+    }
+}
